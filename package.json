@@ -1,0 +1,20 @@
+{
+    "name": "open-web-page",
+    "version": "1.0.0",
+    "description": "Custom agent skill to open a webpage in the default browser on macOS",
+    "main": "handler.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "keywords": [
+        "anythingllm",
+        "custom-skill",
+        "open-webpage"
+    ],
+    "author": "",
+    "license": "MIT",
+    "type": "commonjs",
+    "devDependencies": {
+        "jest": "^29.7.0"
+    }
+}

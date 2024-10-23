@@ -1,0 +1,93 @@
+{
+    "active": true,
+    "hubId": "open-uri-agent",
+    "name": "Open URI Agent",
+    "schema": "skill-1.0.0",
+    "version": "1.3.0",
+    "description": "Opens various types of URIs including web pages and files across different platforms with advanced options and security features",
+    "author": "Robert Sigler",
+    "author_url": "https://github.com/rmrfslashbin",
+    "license": "MIT",
+    "setup_args": {},
+    "examples": [
+        {
+            "prompt": "Open the AnythingLLM GitHub page",
+            "call": "{\"uri\": \"https://github.com/Mintplex-Labs/anything-llm\"}"
+        },
+        {
+            "prompt": "Open a PDF file in Chrome",
+            "call": "{\"uri\": \"file:///path/to/document.pdf\", \"options\": {\"application\": \"Google Chrome\"}}"
+        },
+        {
+            "prompt": "Open a website in the background",
+            "call": "{\"uri\": \"https://www.example.com\", \"options\": {\"background\": true}}"
+        },
+        {
+            "prompt": "Open Microsoft Word in a new instance",
+            "call": "{\"uri\": \"file:///path/to/document.docx\", \"options\": {\"application\": \"Microsoft Word\", \"newInstance\": true}}"
+        },
+        {
+            "prompt": "Open a local HTML file in Firefox",
+            "call": "{\"uri\": \"file:///path/to/index.html\", \"options\": {\"application\": \"Firefox\"}}"
+        },
+        {
+            "prompt": "Open a website and wait for it to close",
+            "call": "{\"uri\": \"https://www.example.com\", \"options\": {\"wait\": true}}"
+        },
+        {
+            "prompt": "Open a folder in File Explorer on Windows",
+            "call": "{\"uri\": \"file:///C:/Users/Username/Documents\"}"
+        },
+        {
+            "prompt": "Open a text file with the default text editor",
+            "call": "{\"uri\": \"file:///path/to/notes.txt\"}"
+        },
+        {
+            "prompt": "Open an FTP link in FileZilla",
+            "call": "{\"uri\": \"ftp://ftp.example.com\", \"options\": {\"application\": \"FileZilla\"}}"
+        },
+        {
+            "prompt": "Open a website, but only if it's in the allowed domains",
+            "call": "{\"uri\": \"https://www.trusted-site.com\", \"options\": {\"allowedDomains\": [\"trusted-site.com\", \"safe-domain.org\"]}}"
+        }
+    ],
+    "entrypoint": {
+        "file": "handler.js",
+        "params": {
+            "uri": {
+                "description": "The URI to open",
+                "type": "string"
+            },
+            "options": {
+                "description": "Additional options for opening the URI",
+                "type": "object",
+                "properties": {
+                    "application": {
+                        "description": "Specifies the application to use for opening the file",
+                        "type": "string"
+                    },
+                    "newInstance": {
+                        "description": "Open a new instance of the application (macOS only)",
+                        "type": "boolean"
+                    },
+                    "background": {
+                        "description": "Do not bring the application to the foreground (macOS only)",
+                        "type": "boolean"
+                    },
+                    "wait": {
+                        "description": "Wait for the application to exit before returning (macOS only)",
+                        "type": "boolean"
+                    },
+                    "allowedDomains": {
+                        "description": "List of allowed domains for security purposes",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "imported": true
+}
